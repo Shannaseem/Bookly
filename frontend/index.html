@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediConnect | Find Your Doctor</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">MediConnect</div>
+      <div class="nav-links">
+        <a href="#" id="navHome" class="active">Home</a>
+        <a href="#" id="navMyAppointments" style="display: none"
+          >My Appointments</a
+        >
+        <a href="#">Doctors</a>
+        <button id="loginBtn" class="btn-primary">Login / Sign Up</button>
+      </div>
+    </nav>
+
+    <header class="hero" id="mainContent">
+      <div class="hero-content">
+        <h1>Your Health, Our Priority</h1>
+        <p>Book appointments with the best doctors in your city seamlessly.</p>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search doctor, specialty (e.g. Dentist)..."
+          />
+          <button class="btn-search">Search</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="doctors-section" id="doctorsContent">
+      <h2>Top Rated Doctors</h2>
+      <div class="grid-container" id="doctorsGrid"></div>
+    </section>
+
+    <section
+      id="patientDashboard"
+      class="doctors-section"
+      style="display: none"
+    >
+      <h2>My Appointments</h2>
+      <div class="grid-container" id="appointmentsGrid">
+        <p>Loading your history...</p>
+      </div>
+      <button class="btn-secondary" id="backToHomeBtn" style="margin-top: 20px">
+        Back to Doctors
+      </button>
+    </section>
+    <section id="doctorDashboard" class="doctors-section" style="display: none">
+      <h2>Today's Queue</h2>
+      <p>Manage your upcoming patient visits.</p>
+
+      <div class="grid-container" id="doctorQueueGrid">
+        <p>Loading queue...</p>
+      </div>
+
+      <button
+        class="btn-secondary"
+        id="docBackToHomeBtn"
+        style="margin-top: 20px"
+      >
+        Back to Home
+      </button>
+    </section>
+    <div id="authModal" class="modal">
+      <div class="modal-content glass">
+        <span class="close-btn">&times;</span>
+        <h2 id="modalTitle">Welcome Back</h2>
+
+        <form id="loginForm">
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+          />
+          <button type="submit" class="btn-full">Login</button>
+          <p class="switch-text">
+            New here? <a href="#" id="switchToSignup">Create an account</a>
+          </p>
+        </form>
+
+        <form id="signupForm" style="display: none">
+          <input
+            type="email"
+            id="signupEmail"
+            placeholder="Email Address"
+            required
+          />
+
+          <select
+            id="signupRole"
+            style="
+              width: 100%;
+              padding: 10px;
+              margin: 10px 0;
+              border: 1px solid #ddd;
+              border-radius: 5px;
+            "
+          >
+            <option value="patient">I am a Patient</option>
+            <option value="doctor">I am a Doctor</option>
+          </select>
+
+          <input
+            type="password"
+            id="signupPassword"
+            placeholder="Password"
+            required
+          />
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            required
+          />
+          <button type="submit" class="btn-full">Sign Up</button>
+          <p class="switch-text">
+            Already have an account? <a href="#" id="switchToLogin">Login</a>
+          </p>
+        </form>
+        <p id="errorMsg" class="error-text"></p>
+      </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+      <div class="modal-content glass">
+        <span class="close-btn" id="closeBooking">&times;</span>
+        <h2 id="bookingTitle">Book Appointment</h2>
+        <p id="bookingDoctorName">Dr. Name</p>
+
+        <form id="bookingForm">
+          <input type="hidden" id="bookingDoctorId" />
+
+          <label
+            for="appointmentTime"
+            style="display: block; text-align: left; margin-top: 10px"
+            >Preferred Time:</label
+          >
+          <input type="datetime-local" id="appointmentTime" required />
+
+          <input
+            type="text"
+            id="appointmentNotes"
+            placeholder="Reason for visit (e.g. Headache)..."
+          />
+
+          <button type="submit" class="btn-full">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>
